@@ -2,9 +2,11 @@ import express from "express";
 import axios from "axios";
 import bodyParser from "body-parser";
 
+require('dotenv').config();
+
 const port = 3000;
 const app = express();
-const apiKey = 'ca85dd51e3b653cd6b0350af';
+const apiKey = process.env.API_KEY;
 const baseUrl = 'https://v6.exchangerate-api.com/v6';
 
 app.use(bodyParser.urlencoded({extended: true}));
