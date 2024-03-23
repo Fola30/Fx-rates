@@ -5,7 +5,7 @@ import env from "dotenv";
 
 env.config();
 
-const port = 3000;
+const port = process.env.PORT || 3000;
 const app = express();
 const apiKey = process.env.API_KEY;
 const baseUrl = 'https://v6.exchangerate-api.com/v6';
