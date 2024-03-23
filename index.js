@@ -13,6 +13,14 @@ const baseUrl = 'https://v6.exchangerate-api.com/v6';
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static('public'));
 
+app.use((req, res, next) => {
+    res.setTimeout(60000, () => {
+      console.log('Request timed out');
+      res.status(503).send('Request timed out');
+    });
+    next();
+});
+
 const currencies = ['AED', 'AUD', 'CAD', 'CNY', 'EUR', 'GBP', 'INR', 'JPY', 'ZAR', 'USD', 'NGN', 'GHS'];
 var initCurrency = 'NGN';
 
